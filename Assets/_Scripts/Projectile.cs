@@ -24,9 +24,13 @@ public class Projectile : MonoBehaviour
     {
         //check if this is an enemy
         //if it is notify damage rating
-        if (collision.transform.CompareTag("Untagged"))
+        Enemy hitEnemy = collision.gameObject.GetComponent<Enemy>();
+        
+        if (hitEnemy != null)
         {
-            Destroy(gameObject);
+            hitEnemy.TakeDamage(damage);
         }
+
+        Destroy(gameObject);
     }
 }
